@@ -70,6 +70,7 @@ import { FrecuenciaFacturaEditarComponent } from "app/pages/frecuencia-facturas/
 import { CierreConfigComponent } from "app/pages/configuracion/cierre-config/cierre-config.component";
 import { ClienteProductosCompradosComponent } from "app/pages/clientes/cliente-productos-comprados/cliente-productos-comprados.component";
 import { UsuariosProductosComponent } from "app/pages/usuarios/usuarios-productos/usuarios-productos.component";
+import { IncentivosListComponentComponent } from '../../pages/logistica/incentivos/incentivos-list-component/incentivos-list-component.component';
 
 const ADMINISTRADOR = "administrador";
 const VENDEDOR = "vendedor";
@@ -109,6 +110,7 @@ export const AdminLayoutRoutes: Routes = [
       { path: "mora60-90", component: Mora60A90Component },
       { path: "clientes-nuevos", component: ClientesNuevosComponent },
       { path: "incentivos", component: IncentivosComponent },
+      { path: "incentivos-historial", component: IncentivosListComponentComponent },
       {
         path: "incentivos-supervisor",
         component: IncentivosSupervisorComponent,

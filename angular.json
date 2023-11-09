@@ -17,11 +17,14 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "allowedCommonJsDependencies": [
-              "chart.js"
+              "chart.js",
+              "sweetalert2",
+              "moment"
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/web.config" 
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -99,7 +102,8 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/web.config" 
             ]
           }
         }
@@ -123,7 +127,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

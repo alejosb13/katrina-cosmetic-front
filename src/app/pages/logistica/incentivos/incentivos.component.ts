@@ -32,6 +32,7 @@ export class IncentivosComponent implements OnInit {
   Data: any[];
   total = 0;
   porcentaje20 = 0;
+  porcentajeText = 0;
   totalContado = 0;
   totalCredito = 0;
   filtros: any = {};
@@ -115,6 +116,7 @@ export class IncentivosComponent implements OnInit {
       this.totalCredito = data.total_credito
       this.total = data.total
       this.porcentaje20 = data.porcentaje20
+      this.porcentajeText = data.porcentaje * 100
 
       this.refreshCountries()
       this.isLoad =false

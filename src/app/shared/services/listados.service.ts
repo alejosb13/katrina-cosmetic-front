@@ -68,6 +68,61 @@ export class Listado {
     });
   }
 
+  // public methods
+  getIncentivosHistorial(options: FiltrosList): Observable<ListadoModel<Factura>> {
+    // console.log("FiltrosList", options);
+    let URL: string;
+
+    if (options.link) {
+      URL = this.urlParams(options.link, options);
+    } else {
+      URL = `${environment.urlAPI}incentivos`;
+
+      if (Object.keys(options).length > 0) {
+        // let URLOptions = `${ListadoURL}/facturas?`
+
+        URL = this.urlParams(URL, options);
+
+        // URL = URLOptions
+      }
+    }
+
+    // console.log(URL);
+
+    return this.http.get<ListadoModel<any>>(URL, {
+      headers: this.headerJson_Token(),
+      responseType: "json",
+    });
+  }
+
+  getIncentivosHistorialByID(id:number): Observable<ListadoModel<Factura>> {
+    // console.log("FiltrosList", options);
+    const URL = `${environment.urlAPI}incentivos/${id}`;
+
+    return this.http.get<ListadoModel<any>>(URL, {
+      headers: this.headerJson_Token(),
+      responseType: "json",
+    });
+  }
+
+  insertIncentivoHistoria(data:any): Observable<any> { 
+
+    return this.http.post(
+      `${environment.urlAPI}incentivos`, 
+      data,
+      {headers: this.headerJson_Token(), responseType: "json" }
+    );
+  }
+  
+  updateIncentivoHistoria(data:any,id:number): Observable<any> { 
+
+    return this.http.put(
+      `${environment.urlAPI}incentivos/${id}`, 
+      data,
+      {headers: this.headerJson_Token(), responseType: "json" }
+    );
+  }
+
   metasHistoricoList(options: FiltrosList): Observable<ListadoModel<Factura>> {
     // console.log("FiltrosList", options);
     let URL: string;

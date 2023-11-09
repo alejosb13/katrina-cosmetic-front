@@ -100,6 +100,8 @@ import { FrecuenciaFacturaFormComponent } from 'app/shared/components/forms/frec
 import { CierreConfigComponent } from 'app/pages/configuracion/cierre-config/cierre-config.component';
 import { ClienteProductosCompradosComponent } from 'app/pages/clientes/cliente-productos-comprados/cliente-productos-comprados.component';
 import { UsuariosProductosComponent } from 'app/pages/usuarios/usuarios-productos/usuarios-productos.component';
+import { IncentivosListComponentComponent } from 'app/pages/logistica/incentivos/incentivos-list-component/incentivos-list-component.component';
+import { IncentivosHistorialFormComponent } from 'app/shared/components/forms/incentivos-historial-form/incentivos-historial-form.component';
 
 @NgModule({
   imports: [
@@ -111,7 +113,7 @@ import { UsuariosProductosComponent } from 'app/pages/usuarios/usuarios-producto
     DirectivesModule
   ],
   declarations: [
-    DashboardComponent,
+    DashboardComponent, 
     UserComponent,
     TableComponent,
     TypographyComponent,
@@ -187,8 +189,12 @@ import { UsuariosProductosComponent } from 'app/pages/usuarios/usuarios-producto
     Mora30A60Component,
     Mora60A90Component,
     ClientesNuevosComponent,
+    
     IncentivosComponent,
     IncentivosSupervisorComponent,
+    IncentivosListComponentComponent,
+    IncentivosHistorialFormComponent,
+    
     ClienteInactivosComponent,
     ClienteDetalleComponent,
     ClientesReactivadosComponent,
@@ -211,6 +217,7 @@ import { UsuariosProductosComponent } from 'app/pages/usuarios/usuarios-producto
     FrecuenciaFacturaInsertarComponent,
     FrecuenciaFacturaEditarComponent,
     FrecuenciaFacturaFormComponent,
+
   ]
 })
 

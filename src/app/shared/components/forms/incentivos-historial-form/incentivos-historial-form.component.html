@@ -1,0 +1,120 @@
+<form [formGroup]="IncentivoForm" [hidden]="loadInfo">
+  <span class="text-info"
+    >Nota: Los campos con <span class="text-danger">(*)</span> son
+    obligatorios.</span
+  >
+  <br />
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Usuario<span class="text-danger"></span></label>
+        <select
+          class="form-control"
+          id="exampleFormControlSelect1"
+          name="user_id"
+          formControlName="user_id"
+          autocomplete="off"
+        >
+          <option selected value="" hidden>Seleccione un usuario</option>
+          <option *ngFor="let usuario of Usuarios" value="{{ usuario.id }}">
+            {{ usuario.name }} {{ usuario.apellido }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Porcentaje<span class="text-danger">(*)</span></label>
+        <input
+          type="number"
+          class="form-control"
+          name="porcentaje"
+          formControlName="porcentaje"
+          placeholder="Ej: 20"
+          autocomplete="off"
+          [ngClass]="{
+            'is-invalid':
+              IncentivoForm.controls['porcentaje'].invalid &&
+              IncentivoForm.controls['porcentaje'].touched,
+              'is-valid': IncentivoForm.controls['porcentaje'].valid
+          }"
+        />
+        <ng-container
+          [ngTemplateOutlet]="formError"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'El porcentaje es requerido',
+            control: IncentivoForm.controls['porcentaje']
+          }"
+        ></ng-container>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Mes del porcentaje<span class="text-danger">(*)</span></label>
+        <input
+          type="month"
+          class="form-control"
+          name="fecha_indice"
+          formControlName="fecha_indice"
+          autocomplete="off"
+          [ngClass]="{
+            'is-invalid':
+              IncentivoForm.controls['fecha_indice'].invalid &&
+              IncentivoForm.controls['fecha_indice'].touched,
+            'is-valid': IncentivoForm.controls['fecha_indice'].valid
+          }"
+        />
+        <ng-container
+          [ngTemplateOutlet]="formError"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'El mes del porcentaje es requerido',
+            control: IncentivoForm.controls['fecha_indice']
+          }"
+        ></ng-container>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="row">
+    <div class="update ml-auto mr-auto">
+      <button
+        type="submit"
+        class="btn btn-primary btn-round"
+        [disabled]="_FrecuenciaService.isLoad"
+        (click)="EnviarFormulario()"
+      >
+        <div *ngIf="incentivo">Actualizar</div>
+        <div *ngIf="!incentivo">Agregar</div>
+      </button>
+    </div>
+  </div>
+  <ng-template
+    #formError
+    let-control="control"
+    let-message="message"
+    let-validation="validation"
+  >
+    <ng-container
+      *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+    >
+      <div class="invalid-feedback">
+        {{ message }}
+      </div>
+    </ng-container>
+  </ng-template>
+</form>
+
+<div [hidden]="!loadInfo" class="container-fluid p-5">
+  <div class="d-flex justify-content-center align-content-center">
+    <span>
+      Cargando incentivo
+      <i class="fas fa-circle-notch fa-spin"></i>
+    </span>
+  </div>
+</div>
